@@ -1,16 +1,19 @@
-﻿while (true)
+﻿static void Main()
 {
-    Console.WriteLine("Введите строку");
+    while (true)
+    {
+        Console.WriteLine("Введите строку");
 
-    TryToParse();
-    Console.Clear();
+        GetNumber();
+        Console.Clear();
+    }
 }
-static void TryToParse()
+static int GetNumber()
 {
     string userInput = Console.ReadLine();
-    bool result = int.TryParse(userInput, out var number);
+    bool isItNumber = int.TryParse(userInput, out int number);
 
-    if (result == true)
+    if (isItNumber == true)
     {
         Console.WriteLine("Преобразование прошло успешно. Число: " + number);
     }
@@ -18,4 +21,6 @@ static void TryToParse()
     {
         Console.WriteLine("Преобразование прошло неудачно.");
     }
+
+    return number;
 }
