@@ -1,25 +1,28 @@
 ﻿static void Main()
 {
-    while (true)
-    {
-        Console.WriteLine("Введите строку");
+    int number = GetNumber();
 
-        GetNumber();
-        Console.Clear();
-    }
+    Console.WriteLine("Преобразование прошло успешно. Число: " + number);
 }
+
 static int GetNumber()
 {
-    string userInput = Console.ReadLine();
-    bool isItNumber = int.TryParse(userInput, out int number);
+    int number = 0;
+    bool isItNumber = false;
 
-    if (isItNumber == true)
+    while (!isItNumber)
     {
-        Console.WriteLine("Преобразование прошло успешно. Число: " + number);
-    }
-    else
-    {
-        Console.WriteLine("Преобразование прошло неудачно.");
+        Console.WriteLine("Введите число:");
+
+        string userInput = Console.ReadLine();
+        if (int.TryParse(userInput, out number))
+        {
+            isItNumber = true;
+        }
+        else
+        {
+            Console.WriteLine("Преобразование прошло неудачно. Пожалуйста, введите корректное число.");
+        }
     }
 
     return number;
